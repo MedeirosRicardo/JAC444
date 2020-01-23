@@ -26,7 +26,7 @@ public class Stack {
 		top++;
 	}
 
-	// Create a method that dynamically remove data from stack
+	// Create a method that remove data from stack
 	public char pop() {
 		char data;
 		top--;
