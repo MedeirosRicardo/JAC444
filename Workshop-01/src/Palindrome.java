@@ -1,4 +1,4 @@
-// Name: Ricardo Medeiros
+// Name: Ricardo Medeiros - 44
 // Seneca Student ID: 135745180
 // Seneca email: rmedeiros7@myseneca.ca
 // Date of completion: 2020-01-20
@@ -15,7 +15,7 @@ public class Palindrome {
 	private static boolean isPalindrome(String input) {
 
 		// Create a Stack to hold the input
-		Stack stack = new Stack();
+		Stack stack = new Stack(input.length());
 			
 		// For loop to populate the stack
 		for (int i = 0; i < input.length(); i++) {
