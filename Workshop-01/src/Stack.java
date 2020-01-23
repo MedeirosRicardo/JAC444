@@ -18,20 +18,17 @@ public class Stack {
 	// Constructor
 	public Stack(int size) {
 		stack = new char[size];
+		top = -1;
 	}
 	
 	// Create a method that add data into stack
 	public void push(char data) {
-		stack[top] = data;
-		top++;
+		stack[++top] = data;
 	}
 
 	// Create a method that remove data from stack
 	public char pop() {
-		char data;
-		top--;
-		data = stack[top];
-		return data;
+		return stack[top--];
 	}
 	
 }
