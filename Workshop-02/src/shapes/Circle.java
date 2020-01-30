@@ -7,8 +7,9 @@ public class Circle implements Shape {
 	private double radius;
 	
 	/**
-	 * Constructor accepts a double for the radius, throws exception if data is not valid
+	 * Constructor accepts a double for the radius
 	 * @param radius A positive double representing the radius of the circle
+	 * @throws CircleException Throws a message if data is not valid
 	 */
 	public Circle(double radius) throws CircleException {
 		if (radius > 0) {
@@ -33,7 +34,7 @@ public class Circle implements Shape {
 	}
 	
 	/**
-	 * Getting the perimeter of the circle
+	 * Calculate the perimeter of the circle
 	 * @return a double indicating the perimeter of the circle
 	 */
 	@Override
@@ -43,8 +44,8 @@ public class Circle implements Shape {
 	}
 	
 	/**
-	 * Returning a String representing the circle
-	 * @return a String representing the circle
+	 * Returning a string representing the circle
+	 * @return a string representing the circle
 	 */
 	@Override
 	public String toString() {
