@@ -18,7 +18,7 @@ public class Rectangle implements Shape{
 			this.width = width;
 			this.height = height;
 		} else {
-			throw new RectangleException("Invalid data!");
+			throw new RectangleException("Invalid side(s)!");
 		}
 	}
 	

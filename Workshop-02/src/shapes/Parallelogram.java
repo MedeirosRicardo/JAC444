@@ -18,7 +18,7 @@ public class Parallelogram implements Shape {
 			this.width = width;
 			this.height = height;
 		} else {
-			throw new ParallelogramException("Invalid data!");
+			throw new ParallelogramException("Invalid side(s)!");
 		}
 	}
 	

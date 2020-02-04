@@ -20,6 +20,8 @@ public class Triangle implements Shape {
 			this.sideOne = sideOne;
 			this.sideTwo = sideTwo;
 			this.sideThree = sideThree;
+		} else {
+			throw new TriangleException("Invalid side(s)!");
 		}
 	}
 	

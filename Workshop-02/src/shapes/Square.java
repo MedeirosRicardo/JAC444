@@ -15,7 +15,7 @@ public class Square implements Shape {
 		if (size > 0) {
 			this.size = size;
 		} else {
-			throw new SquareException("Invalid size!");
+			throw new SquareException("Invalid side!");
 		}
 	}
 	
@@ -24,7 +24,7 @@ public class Square implements Shape {
 		if (size > 0) {
 			this.size = size;
 		} else {
-			throw new SquareException("Invalid size!");
+			throw new SquareException("Invalid side!");
 		}
 	}
 	
