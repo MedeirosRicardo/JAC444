@@ -1,5 +1,7 @@
 package shapes;
 
+import java.text.DecimalFormat;
+
 /** This class creates a shape of type square */
 public class Square implements Shape {
 
@@ -49,6 +51,6 @@ public class Square implements Shape {
 	 */
 	@Override
 	public String toString() {
-		return this.getClass().getName() + " s=" + getSize() + "} perimeter = " + calculatePerimeter();
+		return "Square s=" + getSize() + "} perimeter = " + new DecimalFormat("#.#####").format(calculatePerimeter());
 	}
 }

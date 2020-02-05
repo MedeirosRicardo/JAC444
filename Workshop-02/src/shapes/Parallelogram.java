@@ -1,5 +1,7 @@
 package shapes;
 
+import java.text.DecimalFormat;
+
 /** This class creates a shape of type parallelogram */
 public class Parallelogram implements Shape {
 	
@@ -64,7 +66,7 @@ public class Parallelogram implements Shape {
 	 */
 	@Override
 	public String toString() {
-		return getClass().getName() + "{w=" + getWidth() + ", h=" + getHeight() + "} perimeter = " + calculatePerimeter();
+		return "Parallelogram {w=" + getWidth() + ", h=" + getHeight() + "} perimeter = " + new DecimalFormat("#.#####").format(calculatePerimeter());
 	}
 
 }

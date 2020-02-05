@@ -1,5 +1,7 @@
 package shapes;
 
+import java.text.DecimalFormat;
+
 /** This class creates a shape of type circle */
 public class Circle implements Shape {
 	
@@ -49,7 +51,7 @@ public class Circle implements Shape {
 	 */
 	@Override
 	public String toString() {
-		return this.getClass().getName() + " {r=" + getRadius() + "} perimeter = " + calculatePerimeter();
+		return "Circle {r=" + getRadius() + "} perimeter = " + new DecimalFormat("#.#####").format(calculatePerimeter());
 	}
 
 }

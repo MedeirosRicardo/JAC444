@@ -1,5 +1,7 @@
 package shapes;
 
+import java.text.DecimalFormat;
+
 /** This class creates a shape of type rectangle */
 public class Rectangle implements Shape{
 	
@@ -64,6 +66,6 @@ public class Rectangle implements Shape{
 	 */
 	@Override
 	public String toString() {
-		return this.getClass().getName() + "{w=" + getWidth() + ", h=" + getHeight() + "} perimeter = " + calculatePerimeter();
+		return "Rectangle {w=" + getWidth() + ", h=" + getHeight() + "} perimeter = " + new DecimalFormat("#.#####").format(calculatePerimeter());
 	}
 }
