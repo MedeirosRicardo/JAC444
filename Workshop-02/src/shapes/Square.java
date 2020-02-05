@@ -30,6 +30,6 @@ public class Square extends Rectangle {
 	 */
 	@Override
 	public String toString() {
-		return "Square {s=" + getWidth() + "} perimeter = " + new DecimalFormat("#.00000").format(calculatePerimeter());
+		return getClass().getSimpleName() + " {s=" + getWidth() + "} perimeter = " + new DecimalFormat("#.00000").format(calculatePerimeter());
 	}
 }

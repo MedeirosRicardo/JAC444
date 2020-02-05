@@ -21,6 +21,6 @@ public class Rectangle extends Parallelogram {
 	 */
 	@Override
 	public String toString() {
-		return "Rectangle {w=" + getWidth() + ", h=" + getHeight() + "} perimeter = " + new DecimalFormat("#.00000").format(calculatePerimeter());
+		return getClass().getSimpleName() + " {w=" + getWidth() + ", h=" + getHeight() + "} perimeter = " + new DecimalFormat("#.00000").format(calculatePerimeter());
 	}
 }
