@@ -82,6 +82,6 @@ public class Triangle implements Shape {
 	 */
 	@Override
 	public String toString() {
-		return getClass().getSimpleName() + " {s1=" + getSideOne() + ", s2=" + getSideTwo() + ", s3=" + getSideThree() + "} perimeter = " + new DecimalFormat("#.00000").format(calculatePerimeter());
+		return getClass().getSimpleName() + " {s1=" + getSideOne() + ", s2=" + getSideTwo() + ", s3=" + getSideThree() + "} perimeter = " + new DecimalFormat("0.00000").format(calculatePerimeter());
 	}
 }

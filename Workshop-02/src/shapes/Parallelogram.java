@@ -66,7 +66,7 @@ public class Parallelogram implements Shape {
 	 */
 	@Override
 	public String toString() {
-		return getClass().getSimpleName() + " {w=" + getWidth() + ", h=" + getHeight() + "} perimeter = " + new DecimalFormat("#.00000").format(calculatePerimeter());
+		return getClass().getSimpleName() + " {w=" + getWidth() + ", h=" + getHeight() + "} perimeter = " + new DecimalFormat("0.00000").format(calculatePerimeter());
 	}
 
 }

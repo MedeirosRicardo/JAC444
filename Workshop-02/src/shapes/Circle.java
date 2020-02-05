@@ -51,7 +51,7 @@ public class Circle implements Shape {
 	 */
 	@Override
 	public String toString() {
-		return getClass().getSimpleName() + " {r=" + getRadius() + "} perimeter = " + new DecimalFormat("#.00000").format(calculatePerimeter());
+		return getClass().getSimpleName() + " {r=" + getRadius() + "} perimeter = " + new DecimalFormat("0.00000").format(calculatePerimeter());
 	}
 
 }

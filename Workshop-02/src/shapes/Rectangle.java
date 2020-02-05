@@ -1,7 +1,5 @@
 package shapes;
 
-import java.text.DecimalFormat;
-
 /** This class creates a shape of type rectangle */
 public class Rectangle extends Parallelogram {
 		
@@ -15,12 +13,4 @@ public class Rectangle extends Parallelogram {
 		super(width, height);
 	}
 
-	/**
-	 * Returning a string representing the rectangle
-	 * @return a string representing the rectangle
-	 */
-	@Override
-	public String toString() {
-		return getClass().getSimpleName() + " {w=" + getWidth() + ", h=" + getHeight() + "} perimeter = " + new DecimalFormat("#.00000").format(calculatePerimeter());
-	}
 }
