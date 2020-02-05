@@ -18,7 +18,7 @@ public class Triangle implements Shape {
 	 * @throws TriangleException Throws a message if data is no valid
 	 */
 	public Triangle(double sideOne, double sideTwo, double sideThree) throws TriangleException {
-		if (sideOne < (sideTwo + sideThree) || sideTwo < (sideOne + sideThree) || sideThree < (sideOne + sideTwo)) {
+		if (sideOne < (sideTwo + sideThree) && sideTwo < (sideOne + sideThree) && sideThree < (sideOne + sideTwo)) {
 			this.sideOne = sideOne;
 			this.sideTwo = sideTwo;
 			this.sideThree = sideThree;
