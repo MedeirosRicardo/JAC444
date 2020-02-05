@@ -19,7 +19,7 @@ public class Main {
 		int count = 0;
 		
 		/**
-		 * Header output
+		 * Task 1
 		 */
 		System.out.println("------->JAC 444 Assignment 2 & 3<-------");
 		System.out.println("------->Task 1 ... <-------");
@@ -37,7 +37,8 @@ public class Main {
 				String[] tokens = s.split(",");
 
 				/**
-				 * If Circle calls circle's constructor
+				 * If Circle
+				 * Validates input and calls circle's constructor
 				 */
 				if (tokens[0].equals("Circle") && tokens.length == 2) {
 					try {
@@ -105,13 +106,36 @@ public class Main {
 		}
 		
 		/**
-		 * Program output
+		 * Task 1 output
 		 */
 		System.out.println();
 		System.out.println(count + " shapes were created:");
 		for (int i = 0; i < count; i++) {
-			System.out.println(shapes[i].toString());
+			System.out.println(shapes[i]);
 			System.out.println();
 		}
+		
+		/**
+		 * Task 2
+		 */
+		
+		
+		/**
+		 * Task 3
+		 */
+		double parallelogramTotalPerimeter = 0;
+		double triangleTotalPerimeter = 0;
+		for (int i = 0; i < count; i ++) {
+			if (shapes[i].getClass().getSimpleName().contentEquals("Triangle")) {
+				triangleTotalPerimeter += shapes[i].calculatePerimeter();
+			}
+			
+			if (shapes[i].getClass().getSimpleName().contentEquals("Parallelogram")) {
+				parallelogramTotalPerimeter += shapes[i].calculatePerimeter();
+			}
+		}
+		System.out.println("------->Task 3 ... <-------");
+		System.out.println("Total perimeter of Parallelogram is: " + parallelogramTotalPerimeter);
+		System.out.println("Total perimeter of Triangle is: " + triangleTotalPerimeter);
 	}
 }
