@@ -3,36 +3,15 @@ package shapes;
 import java.text.DecimalFormat;
 
 /** This class creates a shape of type square */
-public class Square implements Shape {
-
-	/** square's size */
-	private double size;
+public class Square extends Rectangle {
 	
 	/**
 	 * Constructor accepts a double for the length
-	 * @param size A positive double representing the length of the square
+	 * @param width A positive double representing the length of the square
 	 * @throws SquareException Throws a message if data is not valid
 	 */
-	public Square(double size) throws SquareException {
-		if (size > 0) {
-			this.size = size;
-		} else {
-			throw new SquareException("Invalid side!");
-		}
-	}
-	
-	// Setters
-	public void setSize(double size) throws SquareException {
-		if (size > 0) {
-			this.size = size;
-		} else {
-			throw new SquareException("Invalid side!");
-		}
-	}
-	
-	// Getters
-	public double getSize() {
-		return size;
+	public Square(double width) throws ParallelogramException {
+		super(width, width);
 	}
 	
 	/**
@@ -42,7 +21,7 @@ public class Square implements Shape {
 	@Override
 	public double calculatePerimeter() {
 		// Square perimeter = 4.s
-		return 4 * size;
+		return 4 * getWidth();
 	}
 	
 	/**
@@ -51,6 +30,6 @@ public class Square implements Shape {
 	 */
 	@Override
 	public String toString() {
-		return "Square s=" + getSize() + "} perimeter = " + new DecimalFormat("#.#####").format(calculatePerimeter());
+		return "Square {s=" + getWidth() + "} perimeter = " + new DecimalFormat("#.00000").format(calculatePerimeter());
 	}
 }

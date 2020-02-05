@@ -1,5 +1,7 @@
 package shapes;
 
+import java.text.DecimalFormat;
+
 /** This class creates a shape of type square */
 public class Triangle implements Shape {
 	
@@ -80,6 +82,6 @@ public class Triangle implements Shape {
 	 */
 	@Override
 	public String toString() {
-		return "Triangle {s1=" + getSideOne() + ", s2=" + getSideTwo() + ", s3=" + getSideThree() + "} perimeter = " + calculatePerimeter();
+		return "Triangle {s1=" + getSideOne() + ", s2=" + getSideTwo() + ", s3=" + getSideThree() + "} perimeter = " + new DecimalFormat("#.00000").format(calculatePerimeter());
 	}
 }
