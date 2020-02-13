@@ -43,7 +43,7 @@ public class Serialize extends Student {
 			student1.setCourses(temp[i]);
 		}
 		
-		// Write the object to a file
+		// Write object to file
 		File f = new File("objectOutput.txt");
 		FileOutputStream fos = new FileOutputStream(f);
 		ObjectOutputStream oos = new ObjectOutputStream(fos);
