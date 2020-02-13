@@ -1,15 +1,23 @@
 package object.serialization;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /** This class creates objects of type student */
-public class Student {
+public class Student implements Serializable {
 	
 	/** class fields */
 	private int stdID;
 	private String firstName;
 	private String lastName;
-	private ArrayList<String> courses;
+	private ArrayList<String> courses = new ArrayList<String>();
+	
+	/**
+	 * Default constructor
+	 */
+	public Student() {
+		
+	}
 	
 	/**
 	 * Constructor accepts 4 arguments
@@ -38,8 +46,8 @@ public class Student {
 		this.lastName = lastName;
 	}
 	
-	public void setCourses(ArrayList<String> courses) {
-		this.courses = courses;
+	public void setCourses(String courses) {
+		this.courses.add(courses);
 	}
 	
 	// Getters
