@@ -126,7 +126,6 @@ public class Main {
 		double smallestTriangle = 10^6;
 		double largestCircle = 0;
 		int resultCount = 0;
-		int test = 0;
 		
 		// For loop that gets smallest and largest perimeters
 		for (int i = 0; i < count; i++) {
