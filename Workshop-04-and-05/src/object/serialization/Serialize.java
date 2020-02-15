@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.ObjectOutputStream;
 
-/** This class serializes and writes students objects in a file */
+/** A console log based class that serializes and writes students objects in a file */
 public class Serialize extends Student {
 	
 	// Main
@@ -44,13 +44,15 @@ public class Serialize extends Student {
 		}
 		
 		// Write object to file
-		File f = new File("objectOutput.txt");
+		File f = new File("objectOutput.bin");
 		FileOutputStream fos = new FileOutputStream(f);
 		ObjectOutputStream oos = new ObjectOutputStream(fos);
 		oos.writeObject(student1);
 		
 		oos.flush();
 		fos.close();
+		
+		System.out.println("Object saved into file " + f.getName());
 		
 	}
 	
