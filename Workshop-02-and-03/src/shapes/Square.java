@@ -14,13 +14,13 @@ public class Square extends Rectangle {
 		super(width, width);
 	}
 	
-<<<<<<< HEAD
+
 	// Need to do the setters
 	// Dont need override calculate perimeter
-=======
+
 	// !!! Need to do the setters
 	// !!! Dont need override calculate perimeter
->>>>>>> 0fe28ab56a3f789f43fe6fa2cfbd9d8e3d959590
+
 	
 	/**
 	 * Calculate the perimeter of the square
