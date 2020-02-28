@@ -86,7 +86,22 @@ public class VisualDeserialize extends Student {
 		        	frame.validate();
 				
 				} catch (IOException | ClassNotFoundException err) {
-					System.out.println(err);
+					// Create a JPanel that holds the error
+					JPanel errorPanel = new JPanel();
+					errorPanel.setLayout(new BoxLayout(errorPanel, BoxLayout.Y_AXIS));
+					
+					// Set border for the error panel
+					errorPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Deserialized Object"));
+					
+					// Set values to labels and append to error panel
+					JLabel error = new JLabel(err.getMessage());
+					errorPanel.add(error);
+					
+					// JFrame setup to load error
+		        	frame.remove(startPanel);
+		    		frame.setSize(500, 300);
+		        	frame.add(errorPanel);
+		        	frame.validate();
 				}
 				
 	        }
