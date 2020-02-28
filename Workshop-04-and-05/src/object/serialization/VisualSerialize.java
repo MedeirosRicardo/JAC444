@@ -1,5 +1,12 @@
 package object.serialization;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -10,7 +17,7 @@ import javax.swing.JTextField;
 public class VisualSerialize extends Student {
 
 	// Main
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		
 		// Create and setup JFrame
 		JFrame frame = new JFrame("Serializing object into file");
@@ -48,9 +55,65 @@ public class VisualSerialize extends Student {
 		
 		// Creates a button that submits input information
 		JButton submitButton = new JButton("SUBMIT");
-		frame.add(submitButton);
+		inputPanel.add(submitButton);
 		
-		
+		// Add Action Listener to the submit button
+		submitButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				try {
+					
+					// Create Student object
+					Student student = new Student();
+					
+					// Use text field to input data from user
+					// ID
+					int stdid = Integer.parseInt(studentIDText.getText());
+					student.setStdID(stdid);
+					
+					// First name
+					String firstName = studentFirstNameText.getText();
+					student.setFirstName(firstName);
+					
+					// Last Name
+					String lastName = studentLastNameText.getText();
+					student.setLastName(lastName);
+					
+					// Courses
+					String coursesInput = studentCoursesText.getText();
+					String[] temp = coursesInput.split(",");
+					for (int i = 0; i < temp.length; i++) {
+						student.setCourses(temp[i]);
+					}
+					
+					// Write object to file
+					File f = new File("objectOutput.bin");
+					FileOutputStream fos = new FileOutputStream(f);
+					ObjectOutputStream oos = new ObjectOutputStream(fos);
+					oos.writeObject(student);
+
+					oos.flush();
+					fos.close();
+					
+					// Create a JPanel for success submission
+					JPanel submitedPanel = new JPanel();
+					submitedPanel.setLayout(new BoxLayout(submitedPanel, BoxLayout.Y_AXIS));
+					
+					// Create success message
+					JLabel successLabel = new JLabel("Object successfully written into file.");
+					submitedPanel.add(successLabel);
+					
+					// JFrame setup to load success message
+					frame.remove(inputPanel);
+					frame.setSize(300,100);
+					frame.add(submitedPanel);
+					frame.validate();
+					
+				} catch(IOException err) {
+					System.out.println(err);
+				}
+			}
+		});
 		
 		// JFrame setup
 		frame.pack();
