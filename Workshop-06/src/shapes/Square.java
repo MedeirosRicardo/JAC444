@@ -20,8 +20,8 @@ public class Square extends Rectangle {
 
 	// !!! Need to do the setters
 	// !!! Dont need override calculate perimeter
-
 	
+		
 	/**
 	 * Calculate the perimeter of the square
 	 * @return a double indicating the perimeter of the square
@@ -38,6 +38,19 @@ public class Square extends Rectangle {
 	 */
 	@Override
 	public String toString() {
-		return getClass().getSimpleName() + " {s=" + getWidth() + "} perimeter = " + new DecimalFormat("0.00000").format(calculatePerimeter());
+		return getClass().getSimpleName() + " {s=" + getWidth() + "} perimeter = " 
+				+ new DecimalFormat("0.00000").format(calculatePerimeter())
+				+ " area = " + new DecimalFormat("0.00000").format(calculateArea(getWidth(), area));
 	}
+	
+	// Workshop 6
+		/**
+		 * Calculate the area of the square
+		 * @return a double indicating the area of the square
+		 */
+		public double calculateArea(double area, ShapeArea s) {
+			return s.calculateArea(area);
+		}
+		
+		ShapeArea area = width -> width * width;
 }

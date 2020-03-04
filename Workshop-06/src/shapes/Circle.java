@@ -53,7 +53,7 @@ public class Circle implements Shape {
 	public String toString() {
 		return getClass().getSimpleName() + " {r=" + getRadius() + "} perimeter = "
 				+ new DecimalFormat("0.00000").format(calculatePerimeter()) 
-				+ " area= " + new DecimalFormat("0.00000").format(calculateArea(radius,area));
+				+ " area= " + new DecimalFormat("0.00000").format(calculateArea(radius, area));
 	}
 	
 	// Workshop 6
