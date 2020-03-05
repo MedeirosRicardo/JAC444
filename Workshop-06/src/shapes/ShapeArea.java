@@ -19,5 +19,5 @@ public interface ShapeArea {
 	 * Creates an abstract method to calculate shape's area
 	 * @return a double indicating the area of the shape
 	 */
-	double calculateArea(double area);
+	double calculateArea();
 }

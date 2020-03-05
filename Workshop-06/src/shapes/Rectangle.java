@@ -4,7 +4,14 @@ import java.text.DecimalFormat;
 
 /** This class creates a shape of type rectangle */
 public class Rectangle extends Parallelogram {
-		
+	
+	// Workshop 6
+	/**
+	 * Calculate the area of the rectangle
+	 * @return a double indicating the area of the rectangle
+	 */
+	private ShapeArea obj = () -> getWidth() * getHeight();
+	
 	/**
 	 * Constructor accepts two double for width and height
 	 * @param width A positive double representing the width of the rectangle
@@ -23,18 +30,7 @@ public class Rectangle extends Parallelogram {
 	public String toString() {
 		return getClass().getSimpleName() + " {w=" + getWidth() + ", h=" + getHeight() 
 			+ "} perimeter = " + new DecimalFormat("0.00000").format(calculatePerimeter())
-			+ " area = " + new DecimalFormat("0.00000").format(calculateArea(getWidth(), area));
+			+ " area = " + new DecimalFormat("0.00000").format(obj.calculateArea());
 	}
-	
-	// Workshop 6
-	/**
-	 * Calculate the area of the rectangle
-	 * @return a double indicating the area of the rectangle
-	 */
-	public double calculateArea(double area, ShapeArea s) {
-		return s.calculateArea(area);
-	}
-	
-	ShapeArea area = width-> getWidth() * getHeight();
 
 }

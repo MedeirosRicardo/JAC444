@@ -5,6 +5,13 @@ import java.text.DecimalFormat;
 /** This class creates a shape of type square */
 public class Square extends Rectangle {
 	
+	// Workshop 6
+	/**
+	 * Calculate the area of the square
+	 * @return a double indicating the area of the square
+	 */
+	private ShapeArea obj = () -> getWidth() * getWidth();
+	
 	/**
 	 * Constructor accepts a double for the length
 	 * @param width A positive double representing the length of the square
@@ -40,17 +47,7 @@ public class Square extends Rectangle {
 	public String toString() {
 		return getClass().getSimpleName() + " {s=" + getWidth() + "} perimeter = " 
 				+ new DecimalFormat("0.00000").format(calculatePerimeter())
-				+ " area = " + new DecimalFormat("0.00000").format(calculateArea(getWidth(), area));
+				+ " area = " + new DecimalFormat("0.00000").format(obj.calculateArea());
 	}
 	
-	// Workshop 6
-		/**
-		 * Calculate the area of the square
-		 * @return a double indicating the area of the square
-		 */
-		public double calculateArea(double area, ShapeArea s) {
-			return s.calculateArea(area);
-		}
-		
-		ShapeArea area = width -> width * width;
 }

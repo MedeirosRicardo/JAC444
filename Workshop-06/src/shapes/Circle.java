@@ -8,6 +8,13 @@ public class Circle implements Shape {
 	/** circle's radius */
 	private double radius;
 	
+	// Workshop 6
+	/**
+	 * Calculate the area of the circle
+	 * @return a double indicating the area of the circle
+	 */
+	private ShapeArea obj = () -> Math.PI * getRadius() * getRadius();
+	
 	/**
 	 * Constructor accepts a double for the radius
 	 * @param radius A positive double representing the radius of the circle
@@ -53,18 +60,8 @@ public class Circle implements Shape {
 	public String toString() {
 		return getClass().getSimpleName() + " {r=" + getRadius() + "} perimeter = "
 				+ new DecimalFormat("0.00000").format(calculatePerimeter()) 
-				+ " area= " + new DecimalFormat("0.00000").format(calculateArea(radius, area));
+				+ " area= " + new DecimalFormat("0.00000").format(obj.calculateArea());
 	}
 	
-	// Workshop 6
-	/**
-	 * Calculate the area of the circle
-	 * @return a double indicating the area of the circle
-	 */
-	public double calculateArea(double area, ShapeArea s) {
-		return s.calculateArea(area);
-	}
-	
-	ShapeArea area = radius -> Math.PI * radius * radius;
 
 }
