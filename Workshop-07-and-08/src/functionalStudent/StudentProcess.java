@@ -1,8 +1,9 @@
 package functionalStudent;
 
 import java.util.Arrays;
-import java.util.Iterator;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class StudentProcess {
 	
@@ -21,14 +22,17 @@ public class StudentProcess {
 	public static void main(String[] args) {
 		
 		// Task 1
+		System.out.println("Task 1");
 		List<Student> list = Arrays.asList(students);
+		list.forEach(System.out::println);
 		
-		list.forEach((n) -> System.out.println(n));
-		
-		/*Iterator<Student> it = list.iterator();
-		while(it.hasNext()){
-			System.out.println(it.next());
-		}*/
+		// Task 2
+		System.out.println("\nTask 2");
+		List<Student> stream = list.stream()
+				.filter(ss -> ss.getGrade() >= 50 && ss.getGrade() <= 100)
+				.sorted(Comparator.comparing(Student::getGrade))
+				.collect(Collectors.toList());
+		stream.forEach(System.out::println);
 	}
 
 }
