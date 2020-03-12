@@ -28,11 +28,10 @@ public class StudentProcess {
 		
 		// Task 2
 		System.out.println("\nTask 2");
-		List<Student> stream = list.stream()
-				.filter(ss -> ss.getGrade() >= 50 && ss.getGrade() <= 100)
-				.sorted(Comparator.comparing(Student::getGrade))
-				.collect(Collectors.toList());
-		stream.forEach(System.out::println);
+		list.stream()
+			.filter(ss -> ss.getGrade() >= 50 && ss.getGrade() <= 100)
+			.sorted(Comparator.comparing(Student::getGrade))
+			.forEach(System.out::println);
 	}
 
 }
