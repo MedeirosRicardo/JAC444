@@ -3,7 +3,7 @@ package functionalStudent;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 public class StudentProcess {
 	
@@ -29,9 +29,16 @@ public class StudentProcess {
 		// Task 2
 		System.out.println("\nTask 2");
 		list.stream()
-			.filter(ss -> ss.getGrade() >= 50 && ss.getGrade() <= 100)
+			.filter(s -> s.getGrade() >= 50 && s.getGrade() <= 100)
 			.sorted(Comparator.comparing(Student::getGrade))
 			.forEach(System.out::println);
+		
+		// Task 3
+		System.out.println("\nTask 3");
+		Optional<Student> student = list.stream()
+			.filter(s -> s.getGrade() >= 50 && s.getGrade() <= 100)
+			.findFirst();
+		System.out.println(student.get());
 	}
 
 }
