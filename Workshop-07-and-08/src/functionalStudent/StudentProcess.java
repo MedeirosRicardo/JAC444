@@ -22,23 +22,50 @@ public class StudentProcess {
 	public static void main(String[] args) {
 		
 		// Task 1
-		System.out.println("Task 1");
+		System.out.println("Task 1:\n");
+		System.out.println("Complete Student list:");
 		List<Student> list = Arrays.asList(students);
 		list.forEach(System.out::println);
 		
 		// Task 2
-		System.out.println("\nTask 2");
+		System.out.println("\nTask 2:");
+		System.out.println("Students who got 50.0-100.0 sorted by grade:");
 		list.stream()
 			.filter(s -> s.getGrade() >= 50 && s.getGrade() <= 100)
 			.sorted(Comparator.comparing(Student::getGrade))
 			.forEach(System.out::println);
 		
 		// Task 3
-		System.out.println("\nTask 3");
+		System.out.println("\nTask 3:\n");
+		System.out.println("First Student who got 50.0-100.0:");
 		Optional<Student> student = list.stream()
 			.filter(s -> s.getGrade() >= 50 && s.getGrade() <= 100)
 			.findFirst();
 		System.out.println(student.get());
+		
+		// Task 4
+		System.out.println("\nTask 4:\n");
+		System.out.println("Students in ascending order by last name then first:");
+		list.stream()
+			.sorted(Comparator.comparing(Student::getFirstName))
+			.sorted(Comparator.comparing(Student::getLastName))
+			.forEach(System.out::println);
+		
+		System.out.println("\nStudents in descending order by last name then first:");
+		list.stream()
+			.sorted(Comparator.comparing(Student::getFirstName).reversed())
+			.sorted(Comparator.comparing(Student::getLastName).reversed())
+			.forEach(System.out::println);
+		
+		// Task 5
+		System.out.println("\nTask 5:\n");
+		System.out.println("Unique Student last names:");
+		list.stream()
+			.sorted(Comparator.comparing(Student::getLastName))
+			.map(Student::getLastName)
+			.distinct()
+			.forEach(System.out::println);
+		
 	}
 
 }
