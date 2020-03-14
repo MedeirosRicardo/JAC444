@@ -3,7 +3,9 @@ package functionalStudent;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class StudentProcess {
 	
@@ -28,7 +30,7 @@ public class StudentProcess {
 		list.forEach(System.out::println);
 		
 		// Task 2
-		System.out.println("\nTask 2:");
+		System.out.println("\n\nTask 2:");
 		System.out.println("Students who got 50.0-100.0 sorted by grade:");
 		list.stream()
 			.filter(s -> s.getGrade() >= 50 && s.getGrade() <= 100)
@@ -36,7 +38,7 @@ public class StudentProcess {
 			.forEach(System.out::println);
 		
 		// Task 3
-		System.out.println("\nTask 3:\n");
+		System.out.println("\n\nTask 3:\n");
 		System.out.println("First Student who got 50.0-100.0:");
 		Optional<Student> student = list.stream()
 			.filter(s -> s.getGrade() >= 50 && s.getGrade() <= 100)
@@ -44,7 +46,7 @@ public class StudentProcess {
 		System.out.println(student.get());
 		
 		// Task 4
-		System.out.println("\nTask 4:\n");
+		System.out.println("\n\nTask 4:\n");
 		System.out.println("Students in ascending order by last name then first:");
 		list.stream()
 			.sorted(Comparator.comparing(Student::getFirstName))
@@ -58,7 +60,7 @@ public class StudentProcess {
 			.forEach(System.out::println);
 		
 		// Task 5
-		System.out.println("\nTask 5:\n");
+		System.out.println("\n\nTask 5:\n");
 		System.out.println("Unique Student last names:");
 		list.stream()
 			.sorted(Comparator.comparing(Student::getLastName))
@@ -67,12 +69,22 @@ public class StudentProcess {
 			.forEach(System.out::println);
 		
 		// Task 6
-		System.out.println("\nTask 6:\n");
+		System.out.println("\n\nTask 6:\n");
 		System.out.println("Student names in order by last name then first name:");
 		list.stream()
 			.sorted(Comparator.comparing(Student::getLastName).thenComparing(Student::getFirstName))
 			.map(Student::getName)
 			.forEach(System.out::println);
+		
+		// Task 7
+		System.out.println("\n\nTask 7:");
+		System.out.println("Students by department:");
+		Map<String, List<Student>> ss = list.stream()
+			.collect(Collectors.groupingBy(Student::getDepartment));
+		ss.forEach((key, value) -> {
+			System.out.println(key);
+			value.forEach(System.out::println);
+		});
 		
 		
 		
