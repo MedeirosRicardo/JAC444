@@ -66,6 +66,16 @@ public class StudentProcess {
 			.distinct()
 			.forEach(System.out::println);
 		
+		// Task 6
+		System.out.println("\nTask 6:\n");
+		System.out.println("Student names in order by last name then first name:");
+		list.stream()
+			.sorted(Comparator.comparing(Student::getLastName).thenComparing(Student::getFirstName))
+			.map(Student::getName)
+			.forEach(System.out::println);
+		
+		
+		
 	}
 
 }
