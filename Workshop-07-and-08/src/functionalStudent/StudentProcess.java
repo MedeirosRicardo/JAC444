@@ -110,6 +110,12 @@ public class StudentProcess {
 			System.out.println(key + " has " + value + " Student(s)");
 		});
 		
+		// Task 9
+		System.out.println("\n\nTask 9:\n");
+		System.out.println("Sum of Students' grades: " + list.stream()
+		.mapToDouble(Student::getGrade)
+		.summaryStatistics()
+		.getSum());
 		
 	}
 
