@@ -1,3 +1,14 @@
+// Name: Ricardo Medeiros - 44
+// Seneca Student ID: 135745180
+// Seneca email: rmedeiros7@myseneca.ca
+// Date of completion: 2020-03-11
+//
+// I confirm that the content of this file is created by me,
+//   with the exception of the parts provided to me by my professor.
+//
+// Workshop 7-8
+// StudentProcess.java
+
 package functionalStudent;
 
 import java.util.Arrays;
@@ -5,6 +16,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 public class StudentProcess {
@@ -77,15 +89,26 @@ public class StudentProcess {
 			.forEach(System.out::println);
 		
 		// Task 7
-		System.out.println("\n\nTask 7:");
+		System.out.println("\n\nTask 7:\n");
 		System.out.println("Students by department:");
-		Map<String, List<Student>> ss = list.stream()
+		Map<String, List<Student>> task7 = list.stream()
 			.collect(Collectors.groupingBy(Student::getDepartment));
-		ss.forEach((key, value) -> {
+		task7.forEach((key, value) -> {
 			System.out.println(key);
 			value.forEach(System.out::println);
 		});
 		
+		// Task 8
+		System.out.println("\n\nTask 8:\n");
+		System.out.println("Count of Students by department:");
+		Map<String, Long> task8 = list.stream()
+			.collect(Collectors.groupingBy(Student::getDepartment))
+			.entrySet()
+			.stream()
+			.collect(Collectors.toMap(Map.Entry::getKey, value -> Long.valueOf(value.getValue().size())));
+		new TreeMap<String, Long>(task8).forEach((key, value) -> {
+			System.out.println(key + " has " + value + " Student(s)");
+		});
 		
 		
 	}
