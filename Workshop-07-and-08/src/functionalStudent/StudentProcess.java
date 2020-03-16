@@ -11,6 +11,7 @@
 
 package functionalStudent;
 
+import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
@@ -116,6 +117,13 @@ public class StudentProcess {
 		.mapToDouble(Student::getGrade)
 		.summaryStatistics()
 		.getSum());
+		
+		// Task 10
+		System.out.println("\n\nTask 10:\n");
+		System.out.println("Average of Students' grades: " + new DecimalFormat("0.00").format(list.stream()
+				.mapToDouble(Student::getGrade)
+				.summaryStatistics()
+				.getAverage()));
 		
 	}
 
