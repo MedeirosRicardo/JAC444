@@ -20,9 +20,10 @@ import java.util.Optional;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
 
+/** This class is used for the logic of the program */
 public class StudentProcess {
 	
-	// Array of Student
+	/** Creates an array of students */
 	private static Student[] students = {
 		new Student("Jack", "Smith", 50.0, "IT"),
 		new Student("Aaron", "Johnson", 76.0, "IT"),
@@ -33,16 +34,19 @@ public class StudentProcess {
 		new Student("Wesley", "Jones", 42.89, "Media")
 	};
 	
-	// Main
+	/**
+	 * Main
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		
-		// Task 1
+		/** Task 1 */
 		System.out.println("Task 1:\n");
 		System.out.println("Complete Student list:");
 		List<Student> list = Arrays.asList(students);
 		list.forEach(System.out::println);
 		
-		// Task 2
+		/** Task 2 */
 		System.out.println("\n\nTask 2:");
 		System.out.println("Students who got 50.0-100.0 sorted by grade:");
 		list.stream()
@@ -50,7 +54,7 @@ public class StudentProcess {
 			.sorted(Comparator.comparing(Student::getGrade))
 			.forEach(System.out::println);
 		
-		// Task 3
+		/** Task 3 */
 		System.out.println("\n\nTask 3:\n");
 		System.out.println("First Student who got 50.0-100.0:");
 		Optional<Student> student = list.stream()
@@ -58,7 +62,7 @@ public class StudentProcess {
 			.findFirst();
 		System.out.println(student.get());
 		
-		// Task 4
+		/** Task 4 */
 		System.out.println("\n\nTask 4:\n");
 		System.out.println("Students in ascending order by last name then first:");
 		list.stream()
@@ -72,7 +76,7 @@ public class StudentProcess {
 			.sorted(Comparator.comparing(Student::getLastName).reversed())
 			.forEach(System.out::println);
 		
-		// Task 5
+		/** Task 5 */
 		System.out.println("\n\nTask 5:\n");
 		System.out.println("Unique Student last names:");
 		list.stream()
@@ -81,7 +85,7 @@ public class StudentProcess {
 			.distinct()
 			.forEach(System.out::println);
 		
-		// Task 6
+		/** Task 6 */
 		System.out.println("\n\nTask 6:\n");
 		System.out.println("Student names in order by last name then first name:");
 		list.stream()
@@ -89,17 +93,17 @@ public class StudentProcess {
 			.map(Student::getName)
 			.forEach(System.out::println);
 		
-		// Task 7
+		/** Task 7 */
 		System.out.println("\n\nTask 7:\n");
 		System.out.println("Students by department:");
 		Map<String, List<Student>> task7 = list.stream()
 			.collect(Collectors.groupingBy(Student::getDepartment));
 		task7.forEach((key, value) -> {
 			System.out.println(key);
-			value.forEach(System.out::println);
+			value.forEach(v -> System.out.println("   " + v));
 		});
 		
-		// Task 8
+		/** Task 8 */
 		System.out.println("\n\nTask 8:\n");
 		System.out.println("Count of Students by department:");
 		Map<String, Long> task8 = list.stream()
@@ -111,14 +115,14 @@ public class StudentProcess {
 			System.out.println(key + " has " + value + " Student(s)");
 		});
 		
-		// Task 9
+		/** Task 9 */
 		System.out.println("\n\nTask 9:\n");
 		System.out.println("Sum of Students' grades: " + list.stream()
 		.mapToDouble(Student::getGrade)
 		.summaryStatistics()
 		.getSum());
 		
-		// Task 10
+		// Task 10 */
 		System.out.println("\n\nTask 10:\n");
 		System.out.println("Average of Students' grades: " + new DecimalFormat("0.00").format(list.stream()
 				.mapToDouble(Student::getGrade)

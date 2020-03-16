@@ -2,15 +2,22 @@ package functionalStudent;
 
 import java.text.DecimalFormat;
 
+/** This class creates objects of type Student */
 public class Student {
 	
-	// Fields
+	/** fields */
 	private String firstName;
 	private String lastName;
 	private double grade;
 	private String department;
 	
-	// Constructor
+	/**
+	 * Constructor accepts 4 arguments
+	 * @param firstName A string representing the student first name
+	 * @param lastName A string representing the student last name
+	 * @param grade A double representing the student grade
+	 * @param department A string representing the student department
+	 */
 	public Student(String firstName, String lastName, double grade, String department) {
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -18,7 +25,7 @@ public class Student {
 		this.department = department;
 	}
 	
-	// Setters
+	/** Setters */
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
@@ -35,7 +42,7 @@ public class Student {
 		this.department = department;
 	}
 	
-	// Getters
+	/** Getters */
 	public String getFirstName() {
 		return this.firstName;
 	}
@@ -52,12 +59,18 @@ public class Student {
 		return this.department;
 	}
 	
-	// GetName - return full name
+	/**
+	 * Return student full name
+	 * @return A string representing student full name
+	 */
 	public String getName() {
 		return this.firstName + " " + this.lastName;
 	}
 	
-	// ToString
+	/**
+	 * Return a string representing the student object
+	 * @return A string representing the student object
+	 */
 	@Override
 	public String toString() {
 		return getFirstName() + "\t" + getLastName() + "\t\t" 
@@ -65,14 +78,14 @@ public class Student {
 				+ getDepartment();
 	}
 	
-	// Equals
+	/**
+	 * Compare if student fields are equals
+	 * @param obj A student object
+	 * @return A boolean representing if student objects are equal
+	 */
 	public boolean equals(Student obj) {
-		/*if (this === obj) {
-			return true;
-		}*/
-		
 		return this.getFirstName() == obj.getFirstName() && this.getLastName() == obj.getLastName()
-				&& this.getGrade() == obj.getGrade() && this.getDepartment() == obj.getDepartment();
+			&& this.getGrade() == obj.getGrade() && this.getDepartment() == obj.getDepartment();
 	}
 
 }
