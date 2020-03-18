@@ -5,7 +5,7 @@ import java.util.LinkedList;
 public class Account {
 	
 	/** Fields */
-	LinkedList<Integer> queue = new LinkedList<>();
+	LinkedList queue = new LinkedList<>();
 	int balance;
 	private int size;
 	private String currency;
@@ -43,18 +43,22 @@ public class Account {
 	}
 	
 	// Deposit
-	public synchronized void deposit() throws InterruptedException {
+	public synchronized void deposit(int value, String currency) throws InterruptedException {
 		setBalance(0);
-		
+		this.size = value;
+//		this.currency = currency;
+				
 		while (true) {
-			while (queue.size() == getSize()) {
+			while (queue.size() == value * 2) {
 				wait();
 			}
+			queue.add(++balance);
+			queue.add(currency);
 			System.out.println("Deposited: " + getBalance());
-			queue.add(getBalance() + 1);
+//			System.out.println(queue.toString());
 			notify();
 			
-			Thread.sleep(10000);
+			Thread.sleep(1000);
 		}
 	}
 	
@@ -66,11 +70,12 @@ public class Account {
 			while (queue.size() == 0) {
 				wait();
 			}
-			int temp = queue.removeFirst();
+			int temp = (int) queue.remove();
+			String cur = (String) queue.remove();
 			System.out.println("Withdraw: " + temp);
 			notify();
 			
-			Thread.sleep(5000);
+			Thread.sleep(1000);
 		}
 	}
 

@@ -1,56 +1,44 @@
 package multi.threaded;
 
-import java.util.LinkedList;
 
 public class Main {
 
-	/** Create object type account */
-	public static void main(String[] args) {
+	/** Create object type account 
+	 * @throws InterruptedException */
+	public static void main(String[] args) throws InterruptedException {
 		
-		LinkedList<Account> queue = new LinkedList<>();
-		
-		// Deposit
-		public synchronized void deposit(Account item) {
-			if (this.getCurrency() == item.getCurrency()) {
-				queue.add(item);
-				notify();
-			}
-			
-		}
+		final Account acc = new Account();
 		
 		// Withdraw
-		public synchronized Account withdraw(Account item) {
-			while(item.getBalance() > 0) {
+		Thread t1 = new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
 				try {
-					wait();
-				} catch(Exception e) {
+					acc.withdraw();
+				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
 			}
+		});
+		
+		
+		// Deposit
+		Thread t2 = new Thread(new Runnable() {
 			
-			item = queue.remove();
-			System.out.println(item.toString());
-			return item;
-		}
-		
-		
-		new Thread() {
+			@Override
 			public void run() {
-				c.withdraw(c);
+				try {
+					acc.deposit(3, "Dollar");
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 			}
-		}.start();
+		});
 		
-		
-		new Thread() {
-			public void run() {
-				c.deposit(1, "Dollar");
-				c.deposit(1, "Euro");
-				c.deposit(1, "Euro");
-				c.deposit(1, "Pound");
-				c.deposit(1, "Pound");
-				c.deposit(1, "Pound");
-			}
-		}.start();
+		t2.start();
+		t1.start();
+	
 	}
 	
 }
