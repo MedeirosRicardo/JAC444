@@ -1,18 +1,18 @@
 package multi.threaded;
 
+import java.util.LinkedList;
 
 public class Account {
 	
 	/** Fields */
-	private int balance;
-	private String currency;
+	LinkedList<Integer> queue = new LinkedList<>();
+	int balance;
 	private int size;
+	private String currency;
 	
 	// Constructor
-	Account(int balance, String currency, int size) {
-		this.balance = balance;
-		this.currency = currency;
-		this.size = size;
+	Account() {
+		
 	}
 	
 	/** Setters */
@@ -38,8 +38,40 @@ public class Account {
 		return this.currency;
 	}
 	
-	public int size() {
+	public int getSize() {
 		return this.size;
+	}
+	
+	// Deposit
+	public synchronized void deposit() throws InterruptedException {
+		setBalance(0);
+		
+		while (true) {
+			while (queue.size() == getSize()) {
+				wait();
+			}
+			System.out.println("Deposited: " + getBalance());
+			queue.add(getBalance() + 1);
+			notify();
+			
+			Thread.sleep(10000);
+		}
+	}
+	
+	// Withdraw
+	public synchronized void withdraw() throws InterruptedException {
+		
+		while (true) {
+			
+			while (queue.size() == 0) {
+				wait();
+			}
+			int temp = queue.removeFirst();
+			System.out.println("Withdraw: " + temp);
+			notify();
+			
+			Thread.sleep(5000);
+		}
 	}
 
 }
