@@ -13,10 +13,17 @@ public class Withdraw extends Thread {
 	
 	@Override
 	public void run() {
+//		System.out.println("Acessing withdraw");
 		while (size > 0) {
-			System.out.println("Acessing withdraw");
 			synchronized(sharedAccount) {
 				sharedAccount.withdraw(1);
+				
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					System.out.println(e.getMessage());
+				}
+				
 			}
 		}
 	}

@@ -9,7 +9,7 @@ public class Account {
 	
 	/**
 	 * Two argument constructor
-	 * @param balance An integet that represents account balance
+	 * @param balance An integer that represents account balance
 	 * @param currency A string that represents account currency
 	 */
 	Account(int balance, String currency) {
@@ -41,7 +41,7 @@ public class Account {
 	public synchronized void deposit(int value, String currency) {
 		while (getBalance() != 0 && getCurrency() != currency) {
 			try {
-				System.out.println(("You cannot deposit a different currency.\n"));
+				System.out.println("You cannot deposit a different currency.\n");
 				wait();
 			} catch (InterruptedException e) {
 				System.out.println(e.getMessage());

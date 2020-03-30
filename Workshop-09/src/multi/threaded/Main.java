@@ -14,12 +14,12 @@ public class Main {
 		Thread deposit = new Deposit(sharedAccount, balance, currency);
 		Thread withdraw = new Withdraw(sharedAccount, balance);
 		
-		deposit.start();
 		withdraw.start();
+		deposit.start();
 		
 		try {
-			deposit.join();
 			withdraw.join();
+			deposit.join();
 		} catch (InterruptedException e) {
 			System.out.println(e.getMessage());
 		}
