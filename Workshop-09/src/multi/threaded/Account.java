@@ -37,7 +37,7 @@ public class Account {
 	}
 	
 	
-	// Deposit
+	/** Deposit transaction */
 	public synchronized void deposit(int value, String currency) {
 		while (getBalance() != 0 && getCurrency() != currency) {
 			try {
@@ -61,7 +61,7 @@ public class Account {
 		notify();
 	}
 	
-	// Withdraw
+	/** Withdraw transaction */
 	public synchronized void withdraw(int value) {
 		while (getBalance() < value) {
 			try {

@@ -1,11 +1,17 @@
 package multi.threaded;
 
+/** This class creates a deposit thread */
 public class Deposit extends Thread {
 	private Account sharedAccount;
 	private int[] balance;
 	private String[] currency;
 	
-	// Constructor
+	/**
+	 * Three argument constructor
+	 * @param sharedAccount Receives an object of type Account
+	 * @param balance Receives an integer array with the values that will be deposited
+	 * @param currency Receives a string array with the currency that will be deposited
+	 */
 	public Deposit(Account sharedAccount, int[] balance, String[] currency) {
 		this.sharedAccount = sharedAccount;
 		this.balance = balance;
@@ -13,11 +19,10 @@ public class Deposit extends Thread {
 	}
 	
 	
-		
 	@Override
 	public void run() {
 		int i = 0;
-//		System.out.println("Accessing deposit");
+		System.out.println("STARTING DEPOSIT THREAD");
 		while (i >= 0 && i < balance.length) {
 			synchronized(sharedAccount) {
 				sharedAccount.deposit(balance[i], currency[i]);

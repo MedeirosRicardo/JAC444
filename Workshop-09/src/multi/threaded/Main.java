@@ -3,16 +3,19 @@ package multi.threaded;
 
 public class Main {
 
-	/** Create object type account 
-	 * @throws InterruptedException */
+	/**
+	 * Main
+	 * Creates two threads that share the same account
+	 * On thread tries to withdraw while the other thread makes the deposits
+	 */
 	public static void main(String[] args) {
 		
 		int[] balance = {1, 2, 3};
 		String[] currency = {"Dollar(s)", "Euro(s)", "Pound(s)"};
 		Account sharedAccount = new Account(0, "");
 		
-		Thread deposit = new Deposit(sharedAccount, balance, currency);
 		Thread withdraw = new Withdraw(sharedAccount, balance);
+		Thread deposit = new Deposit(sharedAccount, balance, currency);
 		
 		withdraw.start();
 		deposit.start();
