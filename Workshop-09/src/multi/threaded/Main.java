@@ -5,42 +5,25 @@ public class Main {
 
 	/** Create object type account 
 	 * @throws InterruptedException */
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) {
 		
-		final Account acc = new Account();
+		int[] balance = {1, 2, 3};
+		String[] currency = {"Dollar(s)", "Euro(s)", "Pound(s)"};
+		Account sharedAccount = new Account(0, "");
 		
-		// Withdraw
-		Thread t1 = new Thread(new Runnable() {
-			
-			@Override
-			public void run() {
-				try {
-					acc.withdraw();
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
-		});
+		Thread deposit = new Deposit(sharedAccount, balance, currency);
+		Thread withdraw = new Withdraw(sharedAccount, balance);
 		
+		deposit.start();
+		withdraw.start();
 		
-		// Deposit
-		Thread t2 = new Thread(new Runnable() {
-			
-			@Override
-			public void run() {
-				try {
-					acc.deposit(1, "Dollar");
-					acc.deposit(2, "Euros");
-					acc.deposit(3, "Pounds");
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
-		});
+		try {
+			deposit.join();
+			withdraw.join();
+		} catch (InterruptedException e) {
+			System.out.println(e.getMessage());
+		}
 		
-		t2.start();
-		t1.start();
-	
 	}
 	
 }

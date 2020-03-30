@@ -41,7 +41,7 @@ public class Account {
 	public synchronized void deposit(int value, String currency) {
 		while (getBalance() != 0 && getCurrency() != currency) {
 			try {
-				System.out.println(("You cannot deposit a different currency."));
+				System.out.println(("You cannot deposit a different currency.\n"));
 				wait();
 			} catch (InterruptedException e) {
 				System.out.println(e.getMessage());
@@ -57,7 +57,7 @@ public class Account {
 		}
 		
 		System.out.println("Deposited: " + value + " " + currency + ".");
-		System.out.println("Balance: " + getBalance() + " " + getCurrency() + ".");
+		System.out.println("Balance: " + getBalance() + " " + getCurrency() + ".\n");
 		notify();
 	}
 	
@@ -65,7 +65,7 @@ public class Account {
 	public synchronized void withdraw(int value) {
 		while (getBalance() < value) {
 			try {
-				System.out.println("You cannot withdraw, insuficient balance.");
+				System.out.println("You cannot withdraw, insuficient balance.\n");
 				wait();
 			} catch (InterruptedException e) {
 				System.out.println(e.getMessage());
@@ -74,7 +74,7 @@ public class Account {
 		
 		setBalance(getBalance() - value);
 		System.out.println("Withdraw: " + value + " " + getCurrency() + ".");
-		System.out.println("Balance: " + getBalance() + " " + getCurrency() + ".");
+		System.out.println("Balance: " + getBalance() + " " + getCurrency() + ".\n");
 		notify();
 	}
 
