@@ -63,8 +63,19 @@ public class Account {
 	
 	// Withdraw
 	public synchronized void withdraw(int value) {
+		while (getBalance() < value) {
+			try {
+				System.out.println("You cannot withdraw, insuficient balance.");
+				wait();
+			} catch (InterruptedException e) {
+				System.out.println(e.getMessage());
+			}
+		}
 		
-		
+		setBalance(getBalance() - value);
+		System.out.println("Withdraw: " + value + " " + getCurrency() + ".");
+		System.out.println("Balance: " + getBalance() + " " + getCurrency() + ".");
+		notify();
 	}
 
 }
