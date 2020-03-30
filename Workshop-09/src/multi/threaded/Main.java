@@ -29,7 +29,9 @@ public class Main {
 			@Override
 			public void run() {
 				try {
-					acc.deposit(3, "Dollar");
+					acc.deposit(1, "Dollar");
+					acc.deposit(2, "Euros");
+					acc.deposit(3, "Pounds");
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}

@@ -1,18 +1,20 @@
 package multi.threaded;
 
-import java.util.LinkedList;
-
+/** This class creates a shared account */
 public class Account {
 	
 	/** Fields */
-	LinkedList queue = new LinkedList<>();
-	int balance;
-	private int size;
+	private int balance;
 	private String currency;
 	
-	// Constructor
-	Account() {
-		
+	/**
+	 * Two argument constructor
+	 * @param balance An integet that represents account balance
+	 * @param currency A string that represents account currency
+	 */
+	Account(int balance, String currency) {
+		this.balance = balance;
+		this.currency = currency;
 	}
 	
 	/** Setters */
@@ -22,10 +24,6 @@ public class Account {
 	
 	public void setCurrency(String currency) {
 		this.currency = currency;
-	}
-	
-	public void setSize(int size) {
-		this.size = size;
 	}
 	
 	
@@ -38,45 +36,35 @@ public class Account {
 		return this.currency;
 	}
 	
-	public int getSize() {
-		return this.size;
-	}
 	
 	// Deposit
-	public synchronized void deposit(int value, String currency) throws InterruptedException {
-		setBalance(0);
-		this.size = value;
-//		this.currency = currency;
-				
-		while (true) {
-			while (queue.size() == value * 2) {
+	public synchronized void deposit(int value, String currency) {
+		while (getBalance() != 0 && getCurrency() != currency) {
+			try {
+				System.out.println(("You cannot deposit a different currency."));
 				wait();
+			} catch (InterruptedException e) {
+				System.out.println(e.getMessage());
 			}
-			queue.add(++balance);
-			queue.add(currency);
-			System.out.println("Deposited: " + getBalance());
-//			System.out.println(queue.toString());
-			notify();
-			
-			Thread.sleep(1000);
 		}
+		
+		if (getCurrency() == currency) {
+			setCurrency(currency);
+			setBalance(balance += value);
+		} else {
+			setCurrency(currency);
+			setBalance(value);
+		}
+		
+		System.out.println("Deposited: " + value + " " + currency + ".");
+		System.out.println("Balance: " + getBalance() + " " + getCurrency() + ".");
+		notify();
 	}
 	
 	// Withdraw
-	public synchronized void withdraw() throws InterruptedException {
+	public synchronized void withdraw(int value) {
 		
-		while (true) {
-			
-			while (queue.size() == 0) {
-				wait();
-			}
-			int temp = (int) queue.remove();
-			String cur = (String) queue.remove();
-			System.out.println("Withdraw: " + temp);
-			notify();
-			
-			Thread.sleep(1000);
-		}
+		
 	}
 
 }
