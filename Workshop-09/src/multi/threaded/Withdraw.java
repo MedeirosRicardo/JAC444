@@ -6,7 +6,7 @@ public class Withdraw extends Thread {
 	private int size;
 	
 	/**
-	 * 
+	 * Two argument constructor
 	 * @param sharedAccount Receives an object of type Account
 	 * @param deposit Receives an integer array that was deposited
 	 */
@@ -18,8 +18,8 @@ public class Withdraw extends Thread {
 	
 	@Override
 	public void run() {
-		System.out.println("STARTING WITHDRAW THREAD");
-		while (size > 0) {
+		System.out.println("STARTING WITHDRAW THREAD\n");
+		for (int i = 0; i < size; i++) {
 			synchronized(sharedAccount) {
 				sharedAccount.withdraw(1);
 				

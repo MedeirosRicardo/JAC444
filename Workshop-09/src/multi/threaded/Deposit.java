@@ -22,7 +22,7 @@ public class Deposit extends Thread {
 	@Override
 	public void run() {
 		int i = 0;
-		System.out.println("STARTING DEPOSIT THREAD");
+		System.out.println("STARTING DEPOSIT THREAD\n");
 		while (i >= 0 && i < balance.length) {
 			synchronized(sharedAccount) {
 				sharedAccount.deposit(balance[i], currency[i]);
