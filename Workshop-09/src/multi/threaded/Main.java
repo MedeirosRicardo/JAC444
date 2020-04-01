@@ -10,8 +10,8 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		
-		int[] balance = {1, 2, 3};
-		String[] currency = {"Dollar(s)", "Euro(s)", "Pound(s)"};
+		int[] balance = {1, 1, 1, 1, 1, 1};
+		String[] currency = {"Dollar(s)", "Euro(s)", "Euro(s)", "Pound(s)", "Pound(s)", "Pound(s)"};
 		Account sharedAccount = new Account(0, "");
 		
 		Thread withdraw = new Withdraw(sharedAccount, balance);
