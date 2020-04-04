@@ -56,9 +56,13 @@ public class Car  implements Serializable {
 		return this.plate;
 	}
 	
+	/**
+	 * Return a string representing the car
+	 * @return A string representing the car
+	 */
 	@Override
 	public String toString() {
-		return "CAR" + "\nModel: " + getModel() + "\nColor: " + getColor() + "\nMileage: "
+		return "Model: " + getModel() + "\nColor: " + getColor() + "\nMileage: "
 				+ getMileage() + "\nPlate: " + getPlate();
 	}
 
