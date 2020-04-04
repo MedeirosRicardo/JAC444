@@ -9,7 +9,12 @@ public class Car implements Serializable {
 	private int mileage;
 	private String plate;
 	
-	
+	/**
+	 * 3 parameters constructor
+	 * @param model Receives a string with car's model
+	 * @param color Receives a string with car's color
+	 * @param mileage Receives an integer with car's mileage
+	 */
 	public Car(String model, String color, int mileage) {
 		this.model = model;
 		this.color = color;
@@ -30,6 +35,10 @@ public class Car implements Serializable {
 		this.mileage = mileage;
 	}
 	
+	public void setPlate(String plate) {
+		this.plate = plate;
+	}
+	
 	// Getters
 	public String getModel() {
 		return this.model;
@@ -45,6 +54,11 @@ public class Car implements Serializable {
 	
 	public String getPlate() {
 		return this.plate;
+	}
+	
+	public String toString() {
+		return "CAR" + "\nModel: " + getModel() + "\nColor: " + getColor() + "\nMileage: "
+				+ getMileage() + "\nPlate: " + getPlate();
 	}
 
 }
