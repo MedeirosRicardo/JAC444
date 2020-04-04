@@ -3,7 +3,7 @@ package rmi;
 import java.io.Serializable;
 
 /** This class creates an object of type car */
-public class Car implements Serializable {
+public class Car  implements Serializable {
 	private String model;
 	private String color;
 	private int mileage;
@@ -56,6 +56,7 @@ public class Car implements Serializable {
 		return this.plate;
 	}
 	
+	@Override
 	public String toString() {
 		return "CAR" + "\nModel: " + getModel() + "\nColor: " + getColor() + "\nMileage: "
 				+ getMileage() + "\nPlate: " + getPlate();
