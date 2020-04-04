@@ -1,7 +1,9 @@
 package rmi;
 
+import java.io.Serializable;
+
 /** This class creates an object of type car */
-public class Car {
+public class Car implements Serializable {
 	private String model;
 	private String color;
 	private int mileage;
@@ -12,7 +14,7 @@ public class Car {
 		this.model = model;
 		this.color = color;
 		this.mileage = mileage;
-		this.plate = "";
+		this.plate = "undefined";
 	}
 	
 	// Setters
